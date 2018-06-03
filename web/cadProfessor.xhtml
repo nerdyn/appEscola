@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./modelo.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="content">
+        <h:form>
+            <p:growl id="growl" showDetail ="true" sticky="true" />
+            
+            
+            <h:panelGrid columns="2">
+                <p:outputLabel value="Matricula" />
+                <p:inputText value="#{bean.prof.matricula}" />
+                
+                <p:outputLabel value="Nome" />
+                <p:inputText value="#{bean.prof.nome}" />
+                
+                <p:outputLabel value="Email" />
+                <p:inputText value="#{bean.prof.email}" />
+                
+                <p:outputLabel value="Nº Horas" />
+                <p:inputText value="#{bean.prof.numHorasTrab}" />
+                
+                <p:outputLabel value="Titulação" />
+                <p:selectOneMenu value="#{bean.prof.titulacao}">
+                    <f:selectItem itemLabel="Selecione" />
+                    <f:selectItems value="#{bean.titulo}"/>
+                </p:selectOneMenu>  
+                
+                <p:commandButton value ="Enviar " action="#{bean.calcProf()}" update="growl"/>
+                
+            </h:panelGrid>  
+        </h:form>
+    </ui:define>
+
+</ui:composition>
